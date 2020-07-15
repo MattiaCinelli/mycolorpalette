@@ -1,0 +1,13 @@
+/* Coolors Exported Palette - https://coolors.co/5fad56-f5e663-410b9b-ef271b-f9c80e */
+
+/* CSV */
+5fad56,f5e663,410b9b,ef271b,f9c80e
+
+/* Array */
+["5fad56","f5e663","410b9b","ef271b","f9c80e"]
+
+/* Object */
+{"Bud Green":"5fad56","Corn":"f5e663","Trypan Blue":"410b9b","Red Pigment":"ef271b","Jonquil":"f9c80e"}
+
+/* Extended Array */
+[{"name":"Bud Green","hex":"5fad56","rgb":[95,173,86],"cmyk":[45,0,50,32],"hsb":[114,50,68],"hsl":[114,35,51],"lab":[64,-42,37]},{"name":"Corn","hex":"f5e663","rgb":[245,230,99],"cmyk":[0,6,60,4],"hsb":[54,60,96],"hsl":[54,88,67],"lab":[90,-10,64]},{"name":"Trypan Blue","hex":"410b9b","rgb":[65,11,155],"cmyk":[58,93,0,39],"hsb":[263,93,61],"hsl":[263,87,33],"lab":[23,54,-65]},{"name":"Red Pigment","hex":"ef271b","rgb":[239,39,27],"cmyk":[0,84,89,6],"hsb":[3,89,94],"hsl":[3,87,52],"lab":[52,72,57]},{"name":"Jonquil","hex":"f9c80e","rgb":[249,200,14],"cmyk":[0,20,94,2],"hsb":[47,94,98],"hsl":[47,95,52],"lab":[83,3,83]}]
