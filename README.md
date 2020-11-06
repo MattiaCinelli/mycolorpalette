@@ -15,14 +15,15 @@ This package has been create to fast-load color palettes for Python matplotlib l
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
-    -[Examples](#examples)
+    - [Examples](#examples)
 - [Development and Contribute](#development-and-contribute)
 - [License](#license)
 
 # Installation
 ```bash
-pip install git+https://https://github.com/MattiaCinelli/mycolorpalette.git#egg=mypalette
+pip install -i https://test.pypi.org/simple/ mypalette
 ```
+<!-- pip install git+https://https://github.com/MattiaCinelli/mycolorpalette.git#egg=mypalette -->
 <!-- pip install mypalette -->
 
 # Usage
@@ -56,7 +57,7 @@ Create a compatible JSON file from list of hexadecimal codes:
 p = palette.create_palette_from_hex_list(
     hexadecimal = ['#000000', '#FFFFFF'],
     output_json = 'black_and_white.json')
-    
+
 print(p)
 {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
 ```
