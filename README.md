@@ -7,7 +7,11 @@
 [![Medium](https://img.shields.io/badge/Medium-MattiaCinelli-green?style=flat-square&logo=medium)](https://medium.com/@mattia.cinelli)
 
 # My Palette
-This package has been create to fast-load color palettes for Python matplotlib library, and to convert txt files  downloaded from https://coolors.co to generate and save new color palettes. 
+This package handles user created color palettes scheme to be used in Python plotting libraries (matplotlib, seaborn, etch).
+
+Users can use specific colors in accordance with their taste or company guidelines that are different from the defaults in matplotlib. Therefore, mypalette helps to create, store, and use color palettes.
+
+It can use a text file from https://coolors.co or a list of hexadecimal codes and saves a JSON format, comprising of colors: name, hexadecimal and RGB codes.
 
 <!-- ![Banner](https://lonelyboy1977.files.wordpress.com/2017/08/work-in-progress.png) -->
 
@@ -15,7 +19,8 @@ This package has been create to fast-load color palettes for Python matplotlib l
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Examples](#examples)
+    - [From coolors.co](#from-coolors.co)
+    - [From hexadecimal](#from-hexadecimal)
 - [Development and Contribute](#development-and-contribute)
 - [License](#license)
 
@@ -27,18 +32,25 @@ pip install --extra-index-url https://test.pypi.org/simple/ mypalette
 <!-- pip install mypalette -->
 
 # Usage
-Go to https://coolors.co and click "Start the generator"
-or use this set of [colors](https://coolors.co/5fad56-f5e663-410b9b-ef271b-f9c80e) on the top right corner press click on Export, Code, Download
+Currently, you can choose two ways to input your palette in mypalette: 
+From coolors.co or as a list of hexadecimal codes
 
-This will save a file 'palette.txt' on you computer. 
+## From coolors.co
+Coolors.co is a website designed to generate new palettes, pick palettes from photos, create gradients, etch. 
 
-## Examples
-Create a new palette from existing txt file:
+Do download needed, proceed to https://coolors.co, and click "Start the generator" or use this set of [colors](https://coolors.co/5fad56-f5e663-410b9b-ef271b-f9c80e). 
+
+On the top right corner, click on Export -> Code -> Download
+
+This will save a text file named 'palette' on your computer. 
+
+Now we can use this file in mypalette:
+
 ```python
 from mypalette import LoadPalette
 
 palette = LoadPalette()
-p = palette.create_new_palette(input_txt='palette_1.txt', output_json='palette_1.json')
+p = palette.create_new_palette(input_txt='palette.txt', output_json='palette.json')
 print(p)
 
 {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
@@ -46,13 +58,17 @@ print(p)
 
 Load a compatible JSON file:
 ```python
-p = palette.load_palette(json_path='palette_1.json')
+p = palette.load_palette(json_path='palette.json')
 
 print(p)
 ['#000000', '#FFFFFF']
 ```
 
-Create a compatible JSON file from list of hexadecimal codes:
+## From hexadecimal
+Alternatively, you can choose to use a list of hexadecimal codes as your input. 
+
+Note, such list can be obtained from the coolors.co/generate url.
+
 ```python
 p = palette.create_palette_from_hex_list(
     hexadecimal = ['#000000', '#FFFFFF'],
@@ -63,12 +79,13 @@ print(p)
 ```
 
 # Development and Contribute
-I really welcome contributors (of all experience levels) to improve this package and expand its scope and reach.
+I welcome contributors (of all experience levels) to improve this package and expand its scope and reach.
 
 If you have never worked on open source project before or you want to brush up your memory here, check out these links:
 - [How to Contribute to Open Source Projects](https://github.com/firstcontributions/first-contributions)
 - [First contributions](https://github.com/firstcontributions/first-contributions)
 
+Please do not hesitate to contact me to report issues or new ideas.
 
 # License
 Copyright (c) 2020 Mattia Cinelli

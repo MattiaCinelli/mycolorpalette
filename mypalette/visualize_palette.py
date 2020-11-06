@@ -24,7 +24,7 @@ def visualize_palette(json_path = None, save_plot = True, save_type = 'png'):
     Examples
     --------   
     >>> from mypalette import visualize_palette
-    >>> visualize_palette(json_path = 'default_1.json')
+    >>> visualize_palette(json_path = 'palette.json')
     """
     p = LoadPalette()
     all_colours = p.load_palette(json_path=json_path, code='All')

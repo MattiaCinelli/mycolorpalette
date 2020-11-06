@@ -8,6 +8,7 @@ os.chdir(os.path.dirname(__file__))
 
 class Test_visualize_palette_correct(unittest.TestCase):
     """
+    Testing the class visualize_palette attributes
     """
     def setUp(self):
         """ """

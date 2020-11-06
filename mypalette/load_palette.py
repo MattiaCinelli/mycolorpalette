@@ -41,11 +41,11 @@ class LoadPalette():
     >>> from mypalette import LoadPalette
 
     >>> palette = LoadPalette()
-    >>> p = palette.create_new_palette(input_txt=/palette_1.txt', output_json='palette_1.json')
+    >>> p = palette.create_new_palette(input_txt=/palette.txt', output_json='palette.json')
     >>> print(p)
     {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
 
-    >>> p = palette.load_palette(json_path='palette_1.json')
+    >>> p = palette.load_palette(json_path='palette.json')
     >>> print(p)
     ['#000000', '#FFFFFF']
 
