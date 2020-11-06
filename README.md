@@ -1,4 +1,4 @@
-![Banner](https://github.com/MattiaCinelli/mycolorpalette/blob/master/commons/banner.png)
+![Banner](https://github.com/MattiaCinelli/mycolorpalette/blob/master/commons/banner.png?raw=true)
 
 ![License](https://img.shields.io/github/license/mattiacinelli/mycolorpalette)
 ![GitHub last commit](https://img.shields.io/github/last-commit/mattiacinelli/mycolorpalette)
@@ -13,8 +13,6 @@ Users can use specific colors in accordance with their taste or company guidelin
 
 It can use a text file from https://coolors.co or a list of hexadecimal codes and saves a JSON format, comprising of colors: name, hexadecimal and RGB codes.
 
-<!-- ![Banner](https://lonelyboy1977.files.wordpress.com/2017/08/work-in-progress.png) -->
-
 # Table of contents
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
@@ -26,10 +24,8 @@ It can use a text file from https://coolors.co or a list of hexadecimal codes an
 
 # Installation
 ```bash
-pip install --extra-index-url https://test.pypi.org/simple/ mypalette
+pip install mypalette
 ```
-<!-- pip install git+https://https://github.com/MattiaCinelli/mycolorpalette.git#egg=mypalette -->
-<!-- pip install mypalette -->
 
 # Usage
 Currently, you can choose two ways to input your palette in mypalette: 
@@ -108,4 +104,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-![Footer](https://github.com/MattiaCinelli/mycolorpalette/blob/master/commons/banner2.png)
+![Footer](https://github.com/MattiaCinelli/mycolorpalette/blob/master/commons/footer.png?raw=true)
