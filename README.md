@@ -21,7 +21,7 @@ This package has been create to fast-load color palettes for Python matplotlib l
 
 # Installation
 ```bash
-pip install -i https://test.pypi.org/simple/ mypalette
+pip install --extra-index-url https://test.pypi.org/simple/ mypalette
 ```
 <!-- pip install git+https://https://github.com/MattiaCinelli/mycolorpalette.git#egg=mypalette -->
 <!-- pip install mypalette -->
