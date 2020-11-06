@@ -1,4 +1,5 @@
 from setuptools import setup
+
 # read the contents of your README file
 from os import path
 this_directory = path.abspath(path.dirname(__file__))
@@ -13,7 +14,7 @@ INSTALL_REQUIRES = [
 ]
 
 setup(name='mypalette',
-      version='1.0.0.3',
+      version='1.0.0.4',
       url='https://github.com/MattiaCinelli/mycolorpalette',
       description='Define your Python plot style',
       packages=['mypalette'],
