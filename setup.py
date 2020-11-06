@@ -11,12 +11,12 @@ INSTALL_REQUIRES = [
       'numpy >=1',
       'pandas==1.1.4',
       'webcolors==1.11.1',
-      'matplotlib>=3',
+      'matplotlib==3.3.2',
       
 ]
 
 setup(name='mypalette',
-      version='1.0.0.6',
+      version='1.0.0.7',
       url='https://github.com/MattiaCinelli/mycolorpalette',
       description='Define your Python plot style',
       packages=['mypalette'],
