@@ -17,7 +17,7 @@ It can use a text file from https://coolors.co or a list of hexadecimal codes an
 - [Table of contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
-    - [From coolors.co](#from-coolors.co)
+    - [From coolors.co](#from-coolors)
     - [From hexadecimal](#from-hexadecimal)
 - [Development and Contribute](#development-and-contribute)
 - [License](#license)
@@ -31,7 +31,7 @@ pip install mypalette
 Currently, you can choose two ways to input your palette in mypalette: 
 From coolors.co or as a list of hexadecimal codes
 
-## From coolors.co
+## From coolors
 Coolors.co is a website designed to generate new palettes, pick palettes from photos, create gradients, etch. 
 
 Do download needed, proceed to https://coolors.co, and click "Start the generator" or use this set of [colors](https://coolors.co/5fad56-f5e663-410b9b-ef271b-f9c80e). 
