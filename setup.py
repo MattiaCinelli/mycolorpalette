@@ -16,12 +16,10 @@ INSTALL_REQUIRES = [
 ]
 
 setup(name='mypalette',
-      version='1.0.0.9',
+      version='1.0.1.0',
       url='https://github.com/MattiaCinelli/mycolorpalette',
       description='Define your Python plot style',
       packages=['mypalette'],
-      # Needed for dependencies
-      # include_package_data=True,
       install_requires=INSTALL_REQUIRES,
       author='Mattia Cinelli',
       author_email='',
