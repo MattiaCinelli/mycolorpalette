@@ -1,12 +1,13 @@
 # Examples
 ## Load Palette
+Download palette.txt from https://coolors.co/5fad56-f5e663-410b9b-ef271b-f9c80e
 ```python
-#Download palette.txt from https://coolors.co/5fad56-f5e663-410b9b-ef271b-f9c80e
 from mypalette import LoadPalette, visualize_palette
 palette = LoadPalette()
 p = palette.create_new_palette(input_txt='palette.txt', output_json='palette.json')
 p
 ```
+It results:
 ```
 {'HEXs': ['#5fad56', '#f5e663', '#410b9b', '#ef271b', '#f9c80e'],
  'RGBs': [(0.37254901960784315, 0.6784313725490196, 0.33725490196078434),
@@ -27,6 +28,15 @@ _ = p.create_palette_from_hex_list(['#fffffa', '#515052', '#000103', '#333138', 
 #from https://coolors.co/5bc0eb-acd49c-fde74c-ccd645-9bc53d-c08f39-e55934-f0692b-fa7921-fa8535
 _ = p.create_palette_from_hex_list(['#5bc0eb', '#acd49c', '#fde74c', '#ccd645', '#9bc53d', '#c08f39', '#e55934', '#f0692b', '#fa7921', '#fa8535'], output_json='palette_3.json')
 ```
+Same results as for create_new_palette
+
+## Load Palette 
+```python
+palette.load_palette(json_path='palette.json')
+```
+```
+['#5fad56', '#f5e663', '#410b9b', '#ef271b', '#f9c80e']
+```
 
 ## Visualize Palettte 
 ```python
@@ -34,4 +44,4 @@ _ = visualize_palette(json_path = 'palette_1.json')
 _ = visualize_palette(json_path = 'palette_2.json')
 _ = visualize_palette(json_path = 'palette_3.json')
 ```
-![result](https://github.com/MattiaCinelli/mycolorpalette/blob/master/commons/vs_results.png?raw=true)
+![result](https://github.com/MattiaCinelli/mycolorpalette/blob/visualize_redoing/commons/vs_results.png?raw=true
