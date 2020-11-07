@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 def __luminosity(r, g, b):
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
+    Two visually different shades of blue are closer, compared two two different colours with the similar intensity. An attempt to compensate for this is by sorting directly for the perceived luminosity of a colour.
     """
     return math.sqrt(.241 * r + .691 * g + .068 * b)
 
@@ -112,7 +113,8 @@ def visualize_palette(json_path = None,
     axes.spines['bottom'].set_visible(False)
 
     for x,(y,z) in enumerate(zip(colors, text_color)):
-        axes.text(x, 0.5, plot_texts[x], color=z, ha='center', va='center',fontsize=fig_size[1]**2)
+        axes.text(x, 0.5, plot_texts[x], color=z, ha='center', va='center',
+        fontsize=fig_size[1]**2, fontweight='black')
         
     axes.set_yticks([])
     axes.set_xticks([])
@@ -122,3 +124,5 @@ def visualize_palette(json_path = None,
         fig.savefig('{}.{}'.format(
             os.path.splitext(json_path)[0], 
             save_type))
+            
+    return(all_colors)
