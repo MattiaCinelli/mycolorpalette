@@ -44,4 +44,4 @@ _ = visualize_palette(json_path = 'palette_1.json')
 _ = visualize_palette(json_path = 'palette_2.json')
 _ = visualize_palette(json_path = 'palette_3.json')
 ```
-![result](https://github.com/MattiaCinelli/mycolorpalette/blob/visualize_redoing/commons/vs_results.png?raw=true
+![result](https://github.com/MattiaCinelli/mycolorpalette/blob/visualize_redoing/commons/vs_results.png?raw=true)
