@@ -244,7 +244,7 @@ class LoadPalette():
             try:
                 Names.append(webcolors.hex_to_name(x))
             except ValueError:
-                Names.append(x)
+                Names.append("")
 
         rgb = [clr.to_rgb(x) for x in hexadecimal]
 

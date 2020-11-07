@@ -16,9 +16,9 @@ INSTALL_REQUIRES = [
 ]
 
 setup(name='mypalette',
-      version='1.0.1.0',
+      version='1.0.1.1',
       url='https://github.com/MattiaCinelli/mycolorpalette',
-      description='Define your Python plot style',
+      description='Define and manage your plot colors in Python',
       packages=['mypalette'],
       install_requires=INSTALL_REQUIRES,
       author='Mattia Cinelli',
