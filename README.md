@@ -1,5 +1,4 @@
 ![Banner](https://github.com/MattiaCinelli/mycolorpalette/blob/master/commons/banner.png?raw=true)
-
 ![License](https://img.shields.io/github/license/mattiacinelli/mycolorpalette)
 ![GitHub last commit](https://img.shields.io/github/last-commit/mattiacinelli/mycolorpalette)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-MattiaCinelli-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/mattia-cinelli-b8a06879/)
