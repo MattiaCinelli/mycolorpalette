@@ -2,9 +2,8 @@
 
 ![License](https://img.shields.io/github/license/mattiacinelli/mycolorpalette)
 ![GitHub last commit](https://img.shields.io/github/last-commit/mattiacinelli/mycolorpalette)
-[![Website](https://img.shields.io/badge/Website-MattiaCinelli-blue?style=flat-square)](https://mattiacinelli.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-MattiaCinelli-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/mattia-cinelli-b8a06879/)
-[![Medium](https://img.shields.io/badge/Medium-MattiaCinelli-green?style=flat-square&logo=medium)](https://medium.com/@mattia.cinelli)
+[![Medium](https://img.shields.io/badge/Medium-MattiaCinelli-green?style=flat-square&logo=medium)](https://mattia-cinelli.medium.com/)
 
 # My Palette
 This package handles user created color palettes scheme to be used in Python plotting libraries (matplotlib, seaborn, etch).

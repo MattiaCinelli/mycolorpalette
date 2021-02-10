@@ -8,19 +8,19 @@ from mypalette import LoadPalette
 logger = logging.getLogger(__name__)
 os.chdir(os.path.dirname(__file__))
 
-class Test_load_palette_class(unittest.TestCase):
+class test_load_palette_class(unittest.TestCase):
     """
     Testing the class load_palette attributes
     """
     def setUp(self):
         """
-        Declearing the objcet class and the temporal folder
+        Declearing the object class and the temporal folder
         """
         self.palette = LoadPalette()
 
     def test_attributes(self):
         """ 
-        Test attibutes present in the class
+        Test attributes present in the class
         """
         self.assertEqual(len(self.palette.primary), 3)
         self.assertEqual(len(self.palette.secondary), 3)
@@ -34,7 +34,7 @@ class Test_create_new_palette(unittest.TestCase):
     """
     def setUp(self):
         """
-        Declearing the objcet class and the temporal folder
+        Declearing the object class and the temporal folder
         """
         self.palette = LoadPalette()
         self.test_dir = tempfile.mkdtemp()
@@ -51,8 +51,8 @@ class Test_create_new_palette(unittest.TestCase):
         Test if the method runs correctly and save the file.
         """
         self.p = self.palette.create_new_palette(
-            input_txt='data/test_palette.txt',
-            output_json=self.json_file
+            input_txt = 'data/test_palette.txt',
+            output_json = self.json_file
             )
         self.assertTrue(os.path.isfile(self.json_file))
 
@@ -61,8 +61,8 @@ class Test_create_new_palette(unittest.TestCase):
         Test if the result from create_new_palette is correct
         """
         self.p = self.palette.create_new_palette(
-            input_txt='data/test_palette.txt',
-            output_json=self.json_file
+            input_txt = 'data/test_palette.txt',
+            output_json = self.json_file
             )
         self.assertIs(type(self.p), dict)
         self.assertIn('HEXs', self.p.keys())
@@ -78,16 +78,17 @@ class Test_create_new_palette(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.palette.create_new_palette()
         with self.assertRaises(TypeError):
-            self.palette.create_new_palette(input_txt='data/test_palette.txt')
+            self.palette.create_new_palette(input_txt = 'data/test_palette.txt')
         with self.assertRaises(TypeError):
-            self.palette.create_new_palette(output_json=self.json_file)
+            self.palette.create_new_palette(output_json = self.json_file)
 
     def test_missing_files(self):
         """ 
         Test missing file
         """
         with self.assertRaises(FileNotFoundError):
-            self.palette.create_new_palette(input_txt='data/test_palette2.txt', output_json=self.json_file)
+            self.palette.create_new_palette(input_txt = 'data/test_palette2.txt', 
+            output_json = self.json_file)
 
 
 class Test_load_palette_method(unittest.TestCase):
@@ -96,41 +97,47 @@ class Test_load_palette_method(unittest.TestCase):
     """
     def setUp(self):
         """
-        Declearing the objcet class
+        Declearing the object class
         """     
         self.palette = LoadPalette()
 
     def test_load_palette_result_hex(self):
         """
-        Testing correct behaviour.  
+        Testing correct behavior.  
         """
-        self.p = self.palette.load_palette(json_path='data/test_palette.json')
+        self.p = self.palette.load_palette(
+            json_path = 'data/test_palette.json')
 
         self.assertIs(type(self.p), list)
         self.assertIs(type(self.p[0]), str)
         self.assertEqual(len(self.p), 5)
 
     def test_load_palette_result_rgb(self):
-        self.p = self.palette.load_palette(json_path='data/test_palette.json', code='RGBs')
+        self.p = self.palette.load_palette(
+            json_path = 'data/test_palette.json', code = 'RGBs')
         self.assertIs(type(self.p), list)
         self.assertIs(type(self.p[0]), tuple)
         self.assertEqual(len(self.p), 5)
 
     def test_load_palette_result_names(self):
-        self.p = self.palette.load_palette(json_path='data/test_palette.json', code='Names')
+        self.p = self.palette.load_palette(
+            json_path = 'data/test_palette.json', code = 'Names')
         self.assertIs(type(self.p), list)
         self.assertIs(type(self.p[0]), str)
         self.assertEqual(len(self.p), 5)
 
     def test_load_palette_result_all(self):
-        self.p = self.palette.load_palette(json_path='data/test_palette.json', code='All')
+        self.p = self.palette.load_palette(
+            json_path = 'data/test_palette.json', code = 'All')
         self.assertIs(type(self.p), dict)
         self.assertEqual(len(self.p.keys()), 3)
         self.assertEqual(len(self.p['HEXs']), 5)
     
     def test_load_palette_wrong_code(self):
         with self.assertRaises(KeyError):
-            self.palette.load_palette(json_path='data/test_palette.json', code='xxx')
+            self.palette.load_palette(
+                json_path = 'data/test_palette.json', 
+                code = 'xxx')
 
     def test_missing_files(self):
         self.palette = LoadPalette()
@@ -149,7 +156,7 @@ class Test_create_palette_from_hex_list(unittest.TestCase):
     """
     def setUp(self):
         """
-        Declearing the objcet class and the temporal folder
+        Declearing the object class and the temporal folder
         """
         self.palette = LoadPalette()
         self.test_dir = tempfile.mkdtemp()

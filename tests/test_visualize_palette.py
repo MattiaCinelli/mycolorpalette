@@ -6,7 +6,7 @@ from mypalette import visualize_palette
 logger = logging.getLogger(__name__)
 os.chdir(os.path.dirname(__file__))
 
-class Test_visualize_palette_correct(unittest.TestCase):
+class test_visualize_palette_correct(unittest.TestCase):
     """
     Testing the class visualize_palette attributes
     """

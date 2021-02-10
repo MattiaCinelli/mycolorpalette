@@ -86,7 +86,7 @@ def visualize_palette(json_path = None,
     """
     ## Loading
     p = LoadPalette()
-    all_colors = p.load_palette(json_path=json_path, code='All')
+    all_colors = p.load_palette(json_path = json_path, code = 'All')
 
     ## Sorting colors
     colors = __sort_colors(all_colors['HEXs'], sort_by=sort_by)
@@ -104,8 +104,8 @@ def visualize_palette(json_path = None,
     if fig_size==None:
         fig_size = (len(colors)*5, 5)
 
-    fig, axes = plt.subplots(figsize=fig_size, dpi=100)
-    axes.bar(y_pos, performance, width=1.0, color=colors)
+    fig, axes = plt.subplots(figsize = fig_size, dpi = 100)
+    axes.bar(y_pos, performance, width = 1.0, color = colors)
 
     axes.spines['right'].set_visible(False)
     axes.spines['top'].set_visible(False)
@@ -113,8 +113,8 @@ def visualize_palette(json_path = None,
     axes.spines['bottom'].set_visible(False)
 
     for x,(y,z) in enumerate(zip(colors, text_color)):
-        axes.text(x, 0.5, plot_texts[x], color=z, ha='center', va='center',
-        fontsize=fig_size[1]**2, fontweight='black')
+        axes.text(x, 0.5, plot_texts[x], color = z, ha = 'center', va = 'center',
+        fontsize = fig_size[1]**2, fontweight = 'black')
         
     axes.set_yticks([])
     axes.set_xticks([])

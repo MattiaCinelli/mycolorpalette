@@ -7,7 +7,7 @@ import matplotlib.colors as clr
 
 logger = logging.getLogger(__name__)
 
-class LoadPalette():
+class LoadPalette:
     """ 
     Core class of mypalette library. After initializing this class, you can create new palette or load pre existing ones.
     You can download the color palette from coolors.co or submite a list of hexadecimal code colors.
@@ -66,7 +66,7 @@ class LoadPalette():
 
 
     def __str__(self):
-        return "This class load and create stored color palette."
+        return("This class load and create stored color palette.")
 
 
     def __load_txt_from_coolors(self, input_txt):
@@ -79,11 +79,11 @@ class LoadPalette():
         Returns
         -------
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
         """
         with open(input_txt , 'r') as reader:
             extended_array = False
-            for pos, line in enumerate(reader):
+            for _, line in enumerate(reader):
                 if extended_array:
                     return ast.literal_eval(line)
                 if "extended array" in line.lower():
@@ -95,7 +95,7 @@ class LoadPalette():
         Parameters
         ----------
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
         output_json : string
             Path for the JSON file where to save the palette in the correct format.
         """
@@ -113,14 +113,14 @@ class LoadPalette():
         json_path : string, default=None 
             Path to the JSON file containing the palette in the correct format.
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
         code : {'HEXs', 'All', 'RGBs', 'Names'}
             Specifies the type of color code required from palette.
             It can be 'HEXs' hexadecimal, 'RGBs' stands for red, green, and blue, 'Names' list of the name of all color (Some colors have no name), 'All' all previous info in a dictionary.
         Returns
         -------
         palette : dictionary
-            Python dictionary containg colors codes and values in matplotlib compatible format.
+            Python dictionary contains colors codes and values in matplotlib compatible format.
         """
         if code == 'All':
             logger.info('Returning all codes from {}'.format( 
@@ -128,10 +128,12 @@ class LoadPalette():
             palette['RGBs'] = [tuple(x) for x in palette['RGBs']]
             return palette
         elif code == 'RGBs':
-            logger.info('Returning {} {} code from {}'.format(len(palette), code, os.path.basename(json_path)))
+            logger.info('Returning {} {} code from {}'.format(
+                len(palette), code, os.path.basename(json_path)))
             return [tuple(x) for x in palette[code]]
         else:
-            logger.info('Returning {} {} code from {}'.format(len(palette), code, os.path.basename(json_path)))
+            logger.info('Returning {} {} code from {}'.format(
+                len(palette), code, os.path.basename(json_path)))
             return palette[code]
 
 
@@ -140,11 +142,11 @@ class LoadPalette():
         Parameters
         ----------
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
         Returns
         -------
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
         """
         rgb = [x['rgb'] for x in palette]
         rgb = [tuple([y/255 for y in x]) for x in rgb]
@@ -166,7 +168,7 @@ class LoadPalette():
         Returns
         -------
         palette : list of strings or dictionary
-            It contains the ccolors codes and values compatible with matplotlib.
+            It contains the colors codes and values compatible with matplotlib.
         Examples
         -------
         >>> from mypalette import LoadPalette
@@ -196,7 +198,7 @@ class LoadPalette():
         Returns
         -------
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
         
         Examples
         -------
@@ -214,7 +216,7 @@ class LoadPalette():
 
     def create_palette_from_hex_list(self, hexadecimal, output_json):
         """
-        Given a list of hexadecimal code colors, it creates a new palette saved in output_json containg the hexadecimal and RGB codes, and color names (if existing).
+        Given a list of hexadecimal code colors, it creates a new palette saved in output_json contains the hexadecimal and RGB codes, and color names (if existing).
 
         Parameters
         ----------
@@ -226,7 +228,7 @@ class LoadPalette():
         Returns
         -------
         palette : dictionary
-            Python dictionary containg colors codes and values.
+            Python dictionary contains colors codes and values.
 
         Examples
         -------
