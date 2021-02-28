@@ -10,7 +10,7 @@ from mypalette import LoadPalette
 
 logger = logging.getLogger(__name__)
 
-def __luminosity(r, g, b):
+def __luminosity(r:float, g:float, b:float) -> float:
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
     Two visually different shades of blue are closer, compared two two different colours with the similar intensity. An attempt to compensate for this is by sorting directly for the perceived luminosity of a colour.
@@ -18,7 +18,7 @@ def __luminosity(r, g, b):
     return math.sqrt(.241 * r + .691 * g + .068 * b)
 
 
-def __step(r, g, b, repetitions=8):
+def __step(r:float, g:float, b:float, repetitions:int = 8):
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
     """
@@ -56,8 +56,8 @@ def __text_colors(colors):
 
 def visualize_palette(json_path = None, 
                       sort_by = None,
-                      save_plot = True, 
-                      save_type = 'png',
+                      save_plot:bool = True, 
+                      save_type:str = 'png',
                       fig_size  = None,
                      ):
     """
