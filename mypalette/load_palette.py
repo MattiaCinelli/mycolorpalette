@@ -1,10 +1,11 @@
 import os
+import sys
 import ast
 import json
 import webcolors
 import logging
 import matplotlib.colors as clr
-
+from typing import Optional, Union, List
 logger = logging.getLogger(__name__)
 
 class LoadPalette:
@@ -69,7 +70,7 @@ class LoadPalette:
         return("This class load and create stored color palette.")
 
 
-    def __load_txt_from_coolors(self, input_txt):
+    def __load_txt_from_coolors(self, input_txt: str) -> None:
         """ 
         Parameters
         ----------
@@ -90,7 +91,7 @@ class LoadPalette:
                     extended_array = True
 
 
-    def __save_palette(self, palette, output_json):
+    def __save_palette(self, palette: dict, output_json: str) -> None:
         """ 
         Parameters
         ----------
@@ -106,7 +107,7 @@ class LoadPalette:
             json.dump(palette , f)
 
 
-    def __palette_code(self, json_path, palette, code):
+    def __palette_code(self, palette:dict, code:dict, json_path:str):
         """ 
         Parameters
         ----------
@@ -137,7 +138,7 @@ class LoadPalette:
             return palette[code]
 
 
-    def __get_compatible_codes(self, palette):
+    def __get_compatible_codes(self, palette:dict) -> None:
         """ 
         Parameters
         ----------
@@ -156,7 +157,7 @@ class LoadPalette:
             'Names':[x['name'] for x in palette]}
 
 
-    def load_palette(self, json_path, code = 'HEXs'):
+    def load_palette(self, json_path:str, code:str = 'HEXs') -> Union[List[str], dict]:
         """ 
         Parameters
         ----------
@@ -186,7 +187,7 @@ class LoadPalette:
         return palette
 
 
-    def create_new_palette(self, input_txt, output_json):
+    def create_new_palette(self, input_txt:str, output_json:str) -> dict:
         """ 
         Parameters
         ----------
@@ -208,13 +209,14 @@ class LoadPalette:
         >>> print(p)
         {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
         """
-        palette = self.__load_txt_from_coolors(input_txt = input_txt)
+        name_space = sys._getframe(1).f_globals
+        palette = self.__load_txt_from_coolors(input_txt = os.path.join(name_space, input_txt))
         palette = self.__get_compatible_codes(palette=palette)
         self.__save_palette(palette = palette, output_json=output_json)
         return palette
 
 
-    def create_palette_from_hex_list(self, hexadecimal, output_json):
+    def create_palette_from_hex_list(self, hexadecimal:List[str], output_json:str) -> dict:
         """
         Given a list of hexadecimal code colors, it creates a new palette saved in output_json contains the hexadecimal and RGB codes, and color names (if existing).
 

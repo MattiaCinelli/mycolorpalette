@@ -18,7 +18,7 @@ def __luminosity(r:float, g:float, b:float) -> float:
     return math.sqrt(.241 * r + .691 * g + .068 * b)
 
 
-def __step(r:float, g:float, b:float, repetitions:int = 8):
+def __step(r:float, g:float, b:float, repetitions:int = 8) -> list:
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
     """
@@ -91,7 +91,7 @@ def visualize_palette(json_path = None,
     ## Sorting colors
     colors = __sort_colors(all_colors['HEXs'], sort_by=sort_by)
     
-    ## Creat text for plot
+    ## Create text for plot
     plot_texts = __plot_text(colors, all_colors)
      
     ## Colors for text
