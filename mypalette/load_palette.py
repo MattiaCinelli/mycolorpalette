@@ -6,7 +6,7 @@ import webcolors
 import logging
 import matplotlib.colors as clr
 from typing import Optional, Union, List
-logger = logging.getLogger(__name__)
+from .logs import logging
 
 class LoadPalette:
     """ 
@@ -63,7 +63,8 @@ class LoadPalette:
     matplotlib_colors = clr.BASE_COLORS
     
     def __init__(self):
-        pass
+        # Logging
+        self.logger = logging.getLogger('Load Palette')
 
 
     def __str__(self):
@@ -85,6 +86,7 @@ class LoadPalette:
         with open(input_txt , 'r') as reader:
             extended_array = False
             for _, line in enumerate(reader):
+                self.logger.info(line)
                 if extended_array:
                     return ast.literal_eval(line)
                 if "extended array" in line.lower():
@@ -100,7 +102,7 @@ class LoadPalette:
         output_json : string
             Path for the JSON file where to save the palette in the correct format.
         """
-        logger.info('Saving new {} file in {}.\n'.format(
+        self.logger.info('Saving new {} file in {}.\n'.format(
                 os.path.basename(output_json), 
                 os.path.dirname(output_json)))
         with open(output_json, 'w') as f:
@@ -124,16 +126,16 @@ class LoadPalette:
             Python dictionary contains colors codes and values in matplotlib compatible format.
         """
         if code == 'All':
-            logger.info('Returning all codes from {}'.format( 
+            self.logger.info('Returning all codes from {}'.format( 
                 os.path.basename(json_path)))
             palette['RGBs'] = [tuple(x) for x in palette['RGBs']]
             return palette
         elif code == 'RGBs':
-            logger.info('Returning {} {} code from {}'.format(
+            self.logger.info('Returning {} {} code from {}'.format(
                 len(palette), code, os.path.basename(json_path)))
             return [tuple(x) for x in palette[code]]
         else:
-            logger.info('Returning {} {} code from {}'.format(
+            self.logger.info('Returning {} {} code from {}'.format(
                 len(palette), code, os.path.basename(json_path)))
             return palette[code]
 
@@ -209,8 +211,9 @@ class LoadPalette:
         >>> print(p)
         {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
         """
-        name_space = sys._getframe(1).f_globals
-        palette = self.__load_txt_from_coolors(input_txt = os.path.join(name_space, input_txt))
+        # name_space = sys._getframe(1).f_globals
+        # palette = self.__load_txt_from_coolors(input_txt = os.path.join(name_space, input_txt))
+        palette = self.__load_txt_from_coolors(input_txt = input_txt)
         palette = self.__get_compatible_codes(palette=palette)
         self.__save_palette(palette = palette, output_json=output_json)
         return palette
