@@ -9,7 +9,7 @@ import matplotlib.colors as clr
 from mypalette import LoadPalette
 
 
-def __luminosity(r:float, g:float, b:float) -> float:
+def _luminosity(r:float, g:float, b:float) -> float:
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
     Two visually different shades of blue are closer, compared two two different colours with the similar intensity. An attempt to compensate for this is by sorting directly for the perceived luminosity of a colour.
@@ -17,7 +17,7 @@ def __luminosity(r:float, g:float, b:float) -> float:
     return math.sqrt(.241 * r + .691 * g + .068 * b)
 
 
-def __step(r:float, g:float, b:float, repetitions:int = 8) -> list:
+def _step(r:float, g:float, b:float, repetitions:int = 8) -> list:
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
     """
@@ -29,27 +29,27 @@ def __step(r:float, g:float, b:float, repetitions:int = 8) -> list:
     return(h2, lum, v2)
 
 
-def __sort_colors(hexs, sort_by):
+def _sort_colors(hexs, sort_by):
     if sort_by == None:
         return(hexs)
     else:
         colors = [list(webcolors.hex_to_rgb(x)) for x in hexs]
         if sort_by == 'luminosity':
-            colors.sort(key=lambda colors: __luminosity(*colors))
+            colors.sort(key=lambda colors: _luminosity(*colors))
         elif sort_by == 'step':
-            colors.sort(key=lambda x: __step(x[0], x[1], x[2]))
+            colors.sort(key=lambda x: _step(x[0], x[1], x[2]))
         else:
             print('No sorting method has be selected.')
         return([webcolors.rgb_to_hex(x) for x in colors])
 
 
-def __plot_text(hexs, all_colors):    
+def _plot_text(hexs, all_colors):    
     return [x+"\n\n"+y.upper()+"\n\n"+str(z) for x, y, z in zip(
             [all_colors['Names'][all_colors['HEXs'].index(x)] for x in hexs], 
             hexs, 
             [list(webcolors.hex_to_rgb(x))for x in hexs])]
 
-def __text_colors(colors):
+def _text_colors(colors):
     return [('white' if x[0]* x[1]* x[2] < 0.05 else 'black') for x in [clr.to_rgb(x) for x in colors]]
 
 
@@ -88,13 +88,13 @@ def visualize_palette(json_path = None,
     all_colors = p.load_palette(json_path = json_path, code = 'All')
 
     ## Sorting colors
-    colors = __sort_colors(all_colors['HEXs'], sort_by=sort_by)
+    colors = _sort_colors(all_colors['HEXs'], sort_by=sort_by)
     
     ## Create text for plot
-    plot_texts = __plot_text(colors, all_colors)
+    plot_texts = _plot_text(colors, all_colors)
      
     ## Colors for text
-    text_color = __text_colors(colors)
+    text_color = _text_colors(colors)
     
     ## Plotting
     y_pos = np.arange(len(colors))
