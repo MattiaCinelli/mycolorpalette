@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as clr
 from mypalette import LoadPalette
 
-logger = logging.getLogger(__name__)
 
 def __luminosity(r:float, g:float, b:float) -> float:
     """
