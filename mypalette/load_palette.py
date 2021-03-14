@@ -42,7 +42,7 @@ class LoadPalette:
     >>> from mypalette import LoadPalette
 
     >>> palette = LoadPalette()
-    >>> p = palette.create_new_palette(input_txt=/palette.txt', output_json='palette.json')
+    >>> p = palette.create_new_palette(input_txt='palette.txt', output_json='palette.json')
     >>> print(p)
     {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
 
@@ -86,7 +86,6 @@ class LoadPalette:
         with open(input_txt , 'r') as reader:
             extended_array = False
             for _, line in enumerate(reader):
-                self.logger.info(line)
                 if extended_array:
                     return ast.literal_eval(line)
                 if "extended array" in line.lower():
@@ -102,7 +101,7 @@ class LoadPalette:
         output_json : string
             Path for the JSON file where to save the palette in the correct format.
         """
-        self.logger.info('Saving new {} file in {}.\n'.format(
+        self.logger.info('Saving new {} file in: {}'.format(
                 os.path.basename(output_json), 
                 os.path.dirname(output_json)))
         with open(output_json, 'w') as f:
@@ -189,7 +188,7 @@ class LoadPalette:
         return palette
 
 
-    def create_new_palette(self, input_txt:str, output_json:str) -> dict:
+    def create_new_palette(self, input_txt:str, output_json:str = None) -> dict:
         """ 
         Parameters
         ----------
@@ -207,14 +206,17 @@ class LoadPalette:
         -------
         >>> from mypalette import LoadPalette
         >>> palette = LoadPalette()
-        >>> p = palette.create_new_palette(input_txt='palette_1.txt', output_json='palette_1.json')
+        >>> p = palette.create_new_palette(input_txt='palette_1.txt')
         >>> print(p)
         {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
         """
-        # name_space = sys._getframe(1).f_globals
-        # palette = self._load_txt_from_coolors(input_txt = os.path.join(name_space, input_txt))
+        self.logger.info(f'Importing input_txt from {input_txt}')
         palette = self._load_txt_from_coolors(input_txt = input_txt)
         palette = self._get_compatible_codes(palette=palette)
+
+        if output_json == None:
+            output_json = os.path.splitext(input_txt)[0]+'.json'
+
         self._save_palette(palette = palette, output_json=output_json)
         return palette
 
