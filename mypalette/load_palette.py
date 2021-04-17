@@ -1,18 +1,24 @@
+# Standard Libraries
 import os
-import sys
+
+# Third party libraries
 import ast
 import json
+from typing import Union, List
 import webcolors
-import logging
 import matplotlib.colors as clr
-from typing import Optional, Union, List
+
+
+# Local imports
 from .logs import logging
 
 
 class LoadPalette:
     """
-    Core class of mypalette library. After initializing this class, you can create new palette or load pre existing ones.
-    You can download the color palette from coolors.co or submite a list of hexadecimal code colors.
+    Core class of mypalette library. After initializing this class,
+    you can create new palette or load pre existing ones.
+    You can download the color palette from coolors.co or
+    submite a list of hexadecimal code colors.
 
     Parameters
     ----------
@@ -33,7 +39,8 @@ class LoadPalette:
 
     References
     -----
-    .. [1] coolors.co: Website of reference from which to download the color palette compatible with this package
+    .. [1] coolors.co: Website of reference from which to download the
+    color palette compatible with this package
     <https://coolors.co/>`_
     .. [2] List of web colors: usability.gov
     <https://www.usability.gov/how-to-and-tools/methods/color-basics.html>`_
@@ -43,9 +50,12 @@ class LoadPalette:
     >>> from mypalette import LoadPalette
 
     >>> palette = LoadPalette()
-    >>> p = palette.create_new_palette(input_txt='palette.txt', output_json='palette.json')
+    >>> p = palette.create_new_palette(
+    ...     input_txt='palette.txt', output_json='palette.json')
     >>> print(p)
-    {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
+    {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0),
+    (1.0, 1.0, 1.0)],
+    'Names': ['black', 'white']}
 
     >>> p = palette.load_palette(json_path='palette.json')
     >>> print(p)
@@ -55,7 +65,9 @@ class LoadPalette:
         hexadecimal = ['#000000', '#FFFFFF'],
         output_json = 'black_and_white.json')
     >>> print(p)
-    {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
+    {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0),
+    (1.0, 1.0, 1.0)],
+    'Names': ['black', 'white']}
     """
 
     primary = ["#FF0000", "#00FF00", "#0000FF"]
@@ -71,17 +83,18 @@ class LoadPalette:
     def __str__(self):
         return "This class load and create stored color palette."
 
-    def _load_txt_from_coolors(self, input_txt: str) -> None:
+    def _load_txt_from_coolors(self, input_txt: str):
         """
         Parameters
         ----------
         input_txt : string
-            Path to the TXT file containing the palette as downloaded by coolors.co.
+            Path to the TXT file containing the palette as
+            downloaded by coolors.co.
 
-        Returns
-        -------
-        palette : dictionary
-            Python dictionary contains colors codes and values.
+        # Returns
+        # -------
+        # palette : dictionary
+        #     Python dictionary contains colors codes and values.
         """
         with open(input_txt, "r") as reader:
             extended_array = False
@@ -98,31 +111,37 @@ class LoadPalette:
         palette : dictionary
             Python dictionary contains colors codes and values.
         output_json : string
-            Path for the JSON file where to save the palette in the correct format.
+            Path for the JSON file where to save the palette in
+            the correct format.
         """
         self.logger.info(
             "Saving new {} file in: {}".format(
                 os.path.basename(output_json), os.path.dirname(output_json)
             )
         )
-        with open(output_json, "w") as f:
-            json.dump(palette, f)
+        with open(output_json, "w") as file_:
+            json.dump(palette, file_)
 
     def _palette_code(self, palette: dict, code: dict, json_path: str):
         """
         Parameters
         ----------
         json_path : string, default=None
-            Path to the JSON file containing the palette in the correct format.
+            Path to the JSON file containing
+            the palette in the correct format.
         palette : dictionary
             Python dictionary contains colors codes and values.
         code : {'HEXs', 'All', 'RGBs', 'Names'}
             Specifies the type of color code required from palette.
-            It can be 'HEXs' hexadecimal, 'RGBs' stands for red, green, and blue, 'Names' list of the name of all color (Some colors have no name), 'All' all previous info in a dictionary.
+            It can be 'HEXs' hexadecimal, 'RGBs' stands for
+            red, green, and blue,
+            'Names' list of the name of all color (Some colors have no name),
+            'All' all previous info in a dictionary.
         Returns
         -------
         palette : dictionary
-            Python dictionary contains colors codes and values in matplotlib compatible format.
+            Python dictionary contains colors codes and
+            values in matplotlib compatible format.
         """
         if code == "All":
             self.logger.info(
@@ -171,10 +190,14 @@ class LoadPalette:
         Parameters
         ----------
         json_path : string, default=None
-            Path to the JSON file containing the palette in the correct format.
+            Path to the JSON file containing
+            the palette in the correct format.
         code : {'HEXs', 'RGBs', 'Names', 'All'}, default='HEXs'
             Specifies the type of color code required from palette.
-            It can be 'HEXs' hexadecimal, 'RGBs' stands for red, green, and blue, 'Names' list of the name of all color (Some colors have no name), 'All' all previous info in a dictionary.
+            It can be 'HEXs' hexadecimal, 'RGBs' stands for
+            red, green, and blue,
+            'Names' list of the name of all color (Some colors have no name),
+            'All' all previous info in a dictionary.
         Returns
         -------
         palette : list of strings or dictionary
@@ -197,9 +220,11 @@ class LoadPalette:
         Parameters
         ----------
         input_txt : string
-            Path to the TXT file containing the palette as downloaded by coolors.co.
+            Path to the TXT file containing the palette as
+            downloaded by coolors.co.
         output_json : string
-            Path for the JSON file where to save the palette in the correct format.
+            Path for the JSON file where to save
+            the palette in the correct format.
 
         Returns
         -------
@@ -212,7 +237,9 @@ class LoadPalette:
         >>> palette = LoadPalette()
         >>> p = palette.create_new_palette(input_txt='palette_1.txt')
         >>> print(p)
-        {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
+        {'HEXs': ['#000000', '#FFFFFF'],
+        'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)],
+        'Names': ['black', 'white']}
         """
         self.logger.info(f"Importing input_txt from {input_txt}")
         palette = self._load_txt_from_coolors(input_txt=input_txt)
@@ -228,14 +255,18 @@ class LoadPalette:
         self, hexadecimal: List[str], output_json: str
     ) -> dict:
         """
-        Given a list of hexadecimal code colors, it creates a new palette saved in output_json contains the hexadecimal and RGB codes, and color names (if existing).
+        Given a list of hexadecimal code colors,
+        it creates a new palette saved in output_json.
+        It contains the hexadecimal and RGB codes,
+        and color names (if existing).
 
         Parameters
         ----------
         hexadecimal: list of strings
             List of hexadecimal values in format: ['#XXXXXX', ...]
         output_json : string
-            Path for the JSON file where to save the palette in the correct format.
+            Path for the JSON file where to save
+            the palette in the correct format.
 
         Returns
         -------
@@ -250,22 +281,24 @@ class LoadPalette:
             hexadecimal = ['#000000', '#FFFFFF'],
             output_json = 'black_and_white.json')
         >>> print(p)
-        {'HEXs': ['#000000', '#FFFFFF'], 'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)], 'Names': ['black', 'white']}
+        {'HEXs': ['#000000', '#FFFFFF'],
+        'RGBs': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)],
+        'Names': ['black', 'white']}
         """
         hexadecimal = [x if x.startswith("#") else "#" + x for x in hexadecimal]
-        Names = []
+        names = []
         for x in hexadecimal:
             try:
-                Names.append(webcolors.hex_to_name(x))
+                names.append(webcolors.hex_to_name(x))
             except ValueError:
-                Names.append("")
+                names.append("")
 
         rgb = [clr.to_rgb(x) for x in hexadecimal]
 
         palette = {
             "HEXs": hexadecimal,
             "RGBs": rgb,
-            "Names": Names,
+            "Names": names,
         }
         self._save_palette(palette=palette, output_json=output_json)
         return palette
