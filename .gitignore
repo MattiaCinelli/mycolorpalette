@@ -1,3 +1,8 @@
+venv
+.tox
+pytype.cfg
+requirements.txt
+
 # ignore all logs
 *.log
 
