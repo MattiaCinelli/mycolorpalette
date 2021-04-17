@@ -1,18 +1,26 @@
+# Standard Libraries
 import os
 import math
-import logging
+
+# Third party libraries
 import colorsys
 import webcolors
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as clr
+
+# Local imports
 from mypalette import LoadPalette
 
 
 def _luminosity(r: float, g: float, b: float) -> float:
     """
     From https://www.alanzucconi.com/2015/09/30/colour-sorting/
-    Two visually different shades of blue are closer, compared two two different colours with the similar intensity. An attempt to compensate for this is by sorting directly for the perceived luminosity of a colour.
+    Two visually different shades of blue are closer,
+    compared two two different colours with the similar intensity.
+
+    An attempt to compensate for this is by sorting directly for
+    the perceived luminosity of a colour.
     """
     return math.sqrt(0.241 * r + 0.691 * g + 0.068 * b)
 
@@ -24,23 +32,21 @@ def _step(r: float, g: float, b: float, repetitions: int = 8) -> list:
     lum = math.sqrt(0.241 * r + 0.691 * g + 0.068 * b)
     h, s, v = colorsys.rgb_to_hsv(r, g, b)
     h2 = int(h * repetitions)
-    lum2 = int(lum * repetitions)
     v2 = int(v * repetitions)
     return (h2, lum, v2)
 
 
 def _sort_colors(hexs, sort_by):
-    if sort_by == None:
+    if sort_by is None:
         return hexs
+    colors = [list(webcolors.hex_to_rgb(x)) for x in hexs]
+    if sort_by == "luminosity":
+        colors.sort(key=lambda colors: _luminosity(*colors))
+    elif sort_by == "step":
+        colors.sort(key=lambda x: _step(x[0], x[1], x[2]))
     else:
-        colors = [list(webcolors.hex_to_rgb(x)) for x in hexs]
-        if sort_by == "luminosity":
-            colors.sort(key=lambda colors: _luminosity(*colors))
-        elif sort_by == "step":
-            colors.sort(key=lambda x: _step(x[0], x[1], x[2]))
-        else:
-            print("No sorting method has be selected.")
-        return [webcolors.rgb_to_hex(x) for x in colors]
+        print("No sorting method has be selected.")
+    return [webcolors.rgb_to_hex(x) for x in colors]
 
 
 def _plot_text(hexs, all_colors):
@@ -69,7 +75,8 @@ def visualize_palette(
     fig_size=None,
 ):
     """
-    This function load a palette file create by create_new_palette() and visualize the colors palette.
+    This function load a palette file create by create_new_palette() and
+    visualize the colors palette.
     Such plot can be saved in the same folder of json_path.
 
     Parameters
@@ -92,24 +99,24 @@ def visualize_palette(
     >>> from mypalette import visualize_palette
     >>> visualize_palette(json_path = 'palette.json')
     """
-    ## Loading
+    # Loading
     p = LoadPalette()
     all_colors = p.load_palette(json_path=json_path, code="All")
 
-    ## Sorting colors
+    # Sorting colors
     colors = _sort_colors(all_colors["HEXs"], sort_by=sort_by)
 
-    ## Create text for plot
+    # Create text for plot
     plot_texts = _plot_text(colors, all_colors)
 
-    ## Colors for text
+    # Colors for text
     text_color = _text_colors(colors)
 
-    ## Plotting
+    # Plotting
     y_pos = np.arange(len(colors))
     performance = [1] * len(colors)
 
-    if fig_size == None:
+    if fig_size is None:
         fig_size = (len(colors) * 5, 5)
 
     fig, axes = plt.subplots(figsize=fig_size, dpi=100)
@@ -135,8 +142,8 @@ def visualize_palette(
     axes.set_yticks([])
     axes.set_xticks([])
 
-    ## Saving the plot
-    if bool(save_plot) == True:
+    # Saving the plot
+    if bool(save_plot) is True:
         fig.savefig("{}.{}".format(os.path.splitext(json_path)[0], save_type))
 
     return all_colors
