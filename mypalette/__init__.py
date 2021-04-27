@@ -4,5 +4,5 @@ beautiful color palettes for any plotting needs."""
 
 __version__ = "1.0.1.2"
 
-from .load_palette import LoadPalette
-from .visualize_palette import visualize_palette
+from . import src
+from . import commons
