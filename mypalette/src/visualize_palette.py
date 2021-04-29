@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as clr
 
 # Local imports
-from .src.load_palette import LoadPalette
+from .load_palette import LoadPalette
 
 
 def _luminosity(r: float, g: float, b: float) -> float:

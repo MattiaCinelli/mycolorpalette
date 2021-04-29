@@ -1,4 +1,4 @@
-venv
+.venv*
 .tox
 pytype.cfg
 requirements.txt

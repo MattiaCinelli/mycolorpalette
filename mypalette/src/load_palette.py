@@ -9,8 +9,7 @@ import webcolors
 import matplotlib.colors as clr
 
 # Local imports
-from mypalette.commons.logs import logging
-
+from ..logs import logging
 
 class LoadPalette:
     """
@@ -301,14 +300,3 @@ class LoadPalette:
         }
         self._save_palette(palette=palette, output_json=output_json)
         return palette
-
-
-if __name__ == "__main__":
-    palette = LoadPalette()
-    p = palette.create_palette_from_hex_list(
-        ["#5fad56", "#f5e663", "#410b9b", "#ef271b", "#f9c80e"],
-        output_json="palette.json",
-    )
-    # p = palette.create_new_palette(
-    #     input_txt='palette.txt', output_json='palette.json')
-    print(p)
