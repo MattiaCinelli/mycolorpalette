@@ -1,4 +1,7 @@
 import logging
+from rich.logging import RichHandler
+
+# logger = logging.getLogger(__name__)
 
 # set up logging to file - see previous section for more details
 logging.basicConfig(
@@ -10,7 +13,7 @@ logging.basicConfig(
 )
 
 # Define a Handler which writes INFO messages or higher to the sys.stderr
-console = logging.StreamHandler()
+console = RichHandler()
 console.setLevel(logging.INFO)
 
 # Set a format which is simpler for console use
